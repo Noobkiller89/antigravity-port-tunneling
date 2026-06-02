@@ -1,0 +1,47 @@
+{
+  "name": "antigravity-tunnels",
+  "displayName": "Antigravity Port Tunneling",
+  "description": "Expose local ports to the internet using Microsoft Dev Tunnels, Localtunnel, or Ngrok",
+  "version": "1.0.0",
+  "publisher": "antigravity",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "antigravity-tunnels-container",
+          "title": "Port Tunneling",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "antigravity-tunnels-container": [
+        {
+          "type": "webview",
+          "id": "antigravity-tunnels-view",
+          "name": "Tunnels Manager"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "antigravity-tunnels.exposePort",
+        "title": "Antigravity: Expose Local Port (Tunnel)"
+      },
+      {
+        "command": "antigravity-tunnels.stopTunnels",
+        "title": "Antigravity: Stop Active Tunnels"
+      }
+    ]
+  }
+}
