@@ -33,6 +33,37 @@ code --install-extension antigravity-tunnels-1.0.0.vsix
 
 ## Usage with Dev Tunnels
 
+### Step 1: Install Microsoft Dev Tunnels CLI (`devtunnel`)
+
+If you don't have the `devtunnel` CLI installed on your machine, install it using one of the following methods:
+
+#### Windows
+- **Using winget (Recommended):**
+  ```powershell
+  winget install Microsoft.devtunnel
+  ```
+- **Direct download:**
+  Download the executable from [aka.ms/TunnelsCliDownload/win-x64](https://aka.ms/TunnelsCliDownload/win-x64) and add its folder to your system's `PATH`.
+
+#### macOS
+- **Using Homebrew:**
+  ```bash
+  brew install --cask devtunnel
+  ```
+
+#### Linux / macOS (Alternative)
+- **Using curl script:**
+  ```bash
+  curl -sL https://aka.ms/DevTunnelCliInstall | bash
+  ```
+
+Once installed, verify the installation by running:
+```bash
+devtunnel --help
+```
+
+### Step 2: Login and Expose Ports
+
 1. Run your local server (e.g. `npm run dev` on port `3000` or `5173`).
 2. Log in to Microsoft Dev Tunnels once on your machine by running:
    ```bash
