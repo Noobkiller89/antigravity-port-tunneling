@@ -486,6 +486,38 @@ class TunnelsViewProvider {
             margin-top: 5px;
             line-height: 1.3;
         }
+        .install-guide-box {
+            margin-top: 10px;
+            font-size: 11px;
+            border: 1px solid var(--vscode-widget-border, rgba(255,255,255,0.1));
+            padding: 8px;
+            border-radius: 4px;
+            background: var(--vscode-keybindingTable-rowsBackground, rgba(0,0,0,0.1));
+        }
+        .install-guide-title {
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .install-guide-title a {
+            color: var(--vscode-textLink-foreground);
+            text-decoration: none;
+        }
+        .install-guide-title a:hover {
+            text-decoration: underline;
+        }
+        .install-guide-steps {
+            line-height: 1.5;
+        }
+        .install-guide-steps code {
+            background: var(--vscode-textCodeBlock-background, rgba(0,0,0,0.2));
+            padding: 1px 3px;
+            border-radius: 3px;
+            font-family: monospace;
+            user-select: all;
+        }
     </style>
 </head>
 <body>
@@ -513,6 +545,17 @@ class TunnelsViewProvider {
             </select>
             <div class="hint" id="provider-hint">
                 Allows sharing local services securely via Microsoft Dev Tunnels. Requires running <code>devtunnel user login</code> in terminal first.
+            </div>
+            <div id="devtunnel-install-instructions" class="install-guide-box" style="display: block;">
+                <div class="install-guide-title">
+                    <span>Dev Tunnel Installation:</span>
+                    <a href="#" id="toggle-install-guide">Hide</a>
+                </div>
+                <div id="install-guide-content" class="install-guide-steps">
+                    <strong>Windows:</strong> <code>winget install Microsoft.devtunnel</code><br>
+                    <strong>macOS:</strong> <code>brew install --cask devtunnel</code><br>
+                    <strong>Linux/Mac:</strong> <code>curl -sL https://aka.ms/DevTunnelCliInstall | bash</code>
+                </div>
             </div>
         </div>
         
@@ -555,15 +598,32 @@ class TunnelsViewProvider {
         const statusEmoji = document.getElementById('status-emoji');
         const statusText = document.getElementById('status-text');
         const actionsPanel = document.getElementById('actions-panel');
+        const installInstructions = document.getElementById('devtunnel-install-instructions');
+        const toggleInstallGuide = document.getElementById('toggle-install-guide');
+        const installGuideContent = document.getElementById('install-guide-content');
+
+        toggleInstallGuide.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (installGuideContent.style.display === 'none') {
+                installGuideContent.style.display = 'block';
+                toggleInstallGuide.textContent = 'Hide';
+            } else {
+                installGuideContent.style.display = 'none';
+                toggleInstallGuide.textContent = 'Show';
+            }
+        });
 
         providerSelect.addEventListener('change', () => {
             const val = providerSelect.value;
             if (val === 'Devtunnels') {
                 providerHint.innerHTML = "Allows sharing local services securely via Microsoft Dev Tunnels. Requires running <code>devtunnel user login</code> in terminal first.";
+                installInstructions.style.display = 'block';
             } else if (val === 'Localtunnel') {
                 providerHint.innerHTML = "Free and instant sharing. No accounts or login required.";
+                installInstructions.style.display = 'none';
             } else if (val === 'Ngrok') {
                 providerHint.innerHTML = "Requires configuring your ngrok authtoken in the terminal first.";
+                installInstructions.style.display = 'none';
             }
         });
 
