@@ -2,7 +2,7 @@
   "name": "antigravity-tunnels",
   "displayName": "Antigravity Port Tunneling",
   "description": "Expose local ports to the internet using Microsoft Dev Tunnels, Localtunnel, or Ngrok",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "antigravity",
   "engines": {
     "vscode": "^1.80.0"

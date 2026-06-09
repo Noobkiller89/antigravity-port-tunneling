@@ -15,7 +15,7 @@ A global editor extension for Antigravity IDE (and VS Code) that enables sharing
 ## Installation
 
 ### Method A: Install from VSIX
-1. Download the `antigravity-tunnels-1.0.0.vsix` file from this repository.
+1. Download the `antigravity-tunnels-1.0.1.vsix` file from this repository.
 2. Open your IDE.
 3. Open the **Extensions** view (`Ctrl+Shift+X`).
 4. Click the three dots menu **`...`** in the top-right corner of the Extensions panel.
@@ -25,9 +25,9 @@ A global editor extension for Antigravity IDE (and VS Code) that enables sharing
 ### Method B: CLI Installation
 Execute the following command in your terminal:
 ```bash
-code --install-extension antigravity-tunnels-1.0.0.vsix
+code --install-extension antigravity-tunnels-1.0.1.vsix
 ```
-*(Or `antigravity-ide.cmd --install-extension antigravity-tunnels-1.0.0.vsix` if you are using Antigravity).*
+*(Or `antigravity-ide.cmd --install-extension antigravity-tunnels-1.0.1.vsix` if you are using Antigravity).*
 
 ---
 
